@@ -17,41 +17,23 @@ Only then uncomment the lines inside the method `initiateLogin()` in the `MainAc
 ## Contributing
 
 Libraries used:
-
-    - [Google: Chrome Custom Tabs](https://developer.chrome.com/multidevice/android/customtabs)
-
-    - [Facebook: Facebook Login SDK](https://developers.facebook.com/docs/facebook-login/android)
-
-    - [Google: Firebase UI](https://github.com/firebase/FirebaseUI-Android)
-
-    - [Google: Firebase Database](https://firebase.google.com/)
-
-    - [Google: Firebase Auth](https://firebase.google.com/)
-
-    - [Google: Firebase Storage](https://firebase.google.com/)
-
-    - [Bumptech: Glide](https://github.com/bumptech/glide)
-
-    - [Nex3z: Flow Layout](https://github.com/nex3z/FlowLayout)
-
-    - [Robert Levonyan: Material Chip View](https://github.com/robertlevonyan/materialChipView)
-
-    - [ArthurHub: Android Image Cropper](https://github.com/ArthurHub/Android-Image-Cropper)
-
-    - [Twitter: Twitter core SDK](https://github.com/twitter/twitter-kit-android)
-
-    - [Yarolegovich: Discrete ScrollView](https://github.com/yarolegovich/DiscreteScrollView)
-
-    - [Hdodenhof: Circle ImageView](https://github.com/hdodenhof/CircleImageView)
-
-    - [Zeibaitsu: Compressor](https://github.com/zetbaitsu/Compressor)
-
-    - [GreenRobot: EventBus](http://greenrobot.org/eventbus/)
-
-    - [Lamba92: ImagesAdapter](https://github.com/lamba92/imagesAdapter)
-
-    - [Lamba92: Utils](https://github.com/lamba92/Utils)
-
+- [Google: Chrome Custom Tabs](https://developer.chrome.com/multidevice/android/customtabs)
+- [Facebook: Facebook Login SDK](https://developers.facebook.com/docs/facebook-login/android)
+- [Google: Firebase UI](https://github.com/firebase/FirebaseUI-Android)
+- [Google: Firebase Database](https://firebase.google.com/)
+- [Google: Firebase Auth](https://firebase.google.com/)
+- [Google: Firebase Storage](https://firebase.google.com/)
+- [Bumptech: Glide](https://github.com/bumptech/glide)
+- [Nex3z: Flow Layout](https://github.com/nex3z/FlowLayout)
+- [Robert Levonyan: Material Chip View](https://github.com/robertlevonyan/materialChipView)
+- [ArthurHub: Android Image Cropper](https://github.com/ArthurHub/Android-Image-Cropper)
+- [Twitter: Twitter core SDK](https://github.com/twitter/twitter-kit-android)
+- [Yarolegovich: Discrete ScrollView](https://github.com/yarolegovich/DiscreteScrollView)
+- [Hdodenhof: Circle ImageView](https://github.com/hdodenhof/CircleImageView)
+- [Zeibaitsu: Compressor](https://github.com/zetbaitsu/Compressor)
+- [GreenRobot: EventBus](http://greenrobot.org/eventbus/)
+- [Lamba92: ImagesAdapter](https://github.com/lamba92/imagesAdapter)
+- [Lamba92: Utils](https://github.com/lamba92/Utils)
 
 ## Authors
 
