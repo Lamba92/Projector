@@ -2,8 +2,8 @@
 
 This project have been built for the exam of Programmaione per dispositivi mobili at the University of turin.
 
-![alt text](https://raw.githubusercontent.com/lamba92/Projector/tree/master/stuff/1.jpg?raw=true)![alt text](https://raw.githubusercontent.com/lamba92/Projector/tree/master/stuff/2.jpg?raw=true)
-![alt text](https://raw.githubusercontent.com/lamba92/Projector/tree/master/stuff/3.jpg?raw=true)![alt text](https://raw.githubusercontent.com/lamba92/Projector/tree/master/stuff/4.jpg?raw=true)
+![alt text](https://raw.githubusercontent.com/lamba92/Projector/tree/master/stuff/1.jpg)![alt text](https://raw.githubusercontent.com/lamba92/Projector/tree/master/stuff/2.jpg)
+![alt text](https://raw.githubusercontent.com/lamba92/Projector/tree/master/stuff/3.jpg)![alt text](https://raw.githubusercontent.com/lamba92/Projector/tree/master/stuff/4.jpg)
 
 ## Getting Started
 
