@@ -53,8 +53,8 @@ dependencies {
     implementation 'id.zelory:compressor:2.1.0'
     implementation 'com.crashlytics.sdk.android:crashlytics:2.9.2'
     implementation 'org.greenrobot:eventbus:3.1.1'
-    implementation 'com.github.Lamba92:imagesAdapter:1.0.1'
-    implementation 'com.github.Lamba92:Utils:1.0.5'
+    implementation 'com.github.Lamba92:imagesAdapter:1.0.2'
+    implementation 'com.github.Lamba92:Utils:1.0.7'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
 }
