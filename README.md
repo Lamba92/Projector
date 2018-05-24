@@ -17,6 +17,7 @@ Only then uncomment the lines inside the method `initiateLogin()` in the `MainAc
 ## Contributing
 
 Libraries used:
+
     - [Google: Chrome Custom Tabs](https://developer.chrome.com/multidevice/android/customtabs)
 
     - [Facebook: Facebook Login SDK](https://developers.facebook.com/docs/facebook-login/android)
