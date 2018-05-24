@@ -2,8 +2,8 @@
 
 This project have been built for the exam of Programmaione per dispositivi mobili at the University of turin.
 
-![alt text](https://github.com/lamba92/projector/stuff/1.jpg)![alt text](https://github.com/lamba92/projector/stuff/2.jpg)
-![alt text](https://github.com/lamba92/projector/stuff/3.jpg)![alt text](https://github.com/lamba92/projector/stuff/4.jpg)
+![alt text](https://github.com/lamba92/Projector/tree/master/stuff1.jpg)![alt text](https://github.com/lamba92/Projector/tree/master/stuff2.jpg)
+![alt text](https://github.com/lamba92/Projector/tree/master/stuff3.jpg)![alt text](https://github.com/lamba92/Projector/tree/master/stuff4.jpg)
 
 ## Getting Started
 
@@ -12,7 +12,7 @@ Clone the repo on your machine. After that you will need to create a new project
 To add Facebook, Google and Twitter support follow the instructions on the [FirebaseUI Auth GitHub page](https://github.com/firebase/FirebaseUI-Android/blob/master/auth/README.md#identity-provider-configuration) to setup and add the necessary resources.
 Only then uncomment the lines inside the method `initiateLogin()` in the `MainActivity` accordingly.
 
-[Here's the essay of the app](https://github.com/lamba92/projector/stuff/relazione.pdf).
+[Here's the essay of the app](https://github.com/lamba92/Projector/tree/master/stuffrelazione.pdf).
 
 ## Contributing
 
