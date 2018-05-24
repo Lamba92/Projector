@@ -1,6 +1,8 @@
 # Project Title
 
-This project have been built for the exam of Programmaione per dispositivi mobili at the University of turin.
+This project have been built for the exam of Programmazione per dispositivi mobili at the University of Turin.
+
+Check the complementary [project](https://github.com/lamba92/Projector-fcf) containing the Firebase Cloud Functions.
 
 ![alt text](https://raw.githubusercontent.com/lamba92/Projector/master/stuff/1.jpg) ![alt text](https://raw.githubusercontent.com/lamba92/Projector/master/stuff/2.jpg)
 ![alt text](https://raw.githubusercontent.com/lamba92/Projector/master/stuff/3.jpg) ![alt text](https://raw.githubusercontent.com/lamba92/Projector/master/stuff/4.jpg)
@@ -35,6 +37,6 @@ Libraries used:
 - [Lamba92: ImagesAdapter](https://github.com/lamba92/imagesAdapter)
 - [Lamba92: Utils](https://github.com/lamba92/Utils)
 
-## Authors
+## Author
 
 * **Lamberto Basti** [lamba92](https://github.com/lamba92)

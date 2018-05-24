@@ -221,7 +221,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    private fun launchFragment(fragmentClass: Class<out Fragment>,
+    private fun launchFragment(fragmentClass: Class<out ProjectorFragment>,
                                bundle: Bundle? = null) {
         var f = false
         if (CacheableFragmentsTagRegister.isCacheable(fragmentClass)) {
