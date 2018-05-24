@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_person_black_24dp"
+            android:title="@string/profile" />
+        <item
+            android:id="@+id/nav_projects"
+            android:icon="@drawable/file_multiple"
+            android:title="@string/all_projects" />
+        <item
+            android:id="@+id/nav_my_project"
+            android:icon="@drawable/ic_add_black_24dp"
+            android:title="@string/create_project" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_exit_to_app_black_24dp"
+            android:title="@string/logout" />
+    </group>
+
+    <item android:title="@string/more">
+        <group android:checkableBehavior="single"
+            android:id="@+id/secondary_menu">
+            <menu>
+                <item
+                    android:id="@+id/nav_about"
+                    android:icon="@drawable/android_studio"
+                    android:title="@string/about" />
+                <item
+                    android:id="@+id/nav_crash"
+                    android:icon="@drawable/ic_directions_car_black_24dp"
+                    android:title="@string/crash" />
+            </menu>
+        </group>
+    </item>
+</menu>
