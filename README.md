@@ -1,4 +1,4 @@
-# Project Title
+# Projector
 
 This project have been built for the exam of Programmazione per dispositivi mobili at the University of Turin.
 
