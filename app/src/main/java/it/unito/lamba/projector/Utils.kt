@@ -10,10 +10,12 @@ import com.google.firebase.storage.StorageReference
 import android.net.Uri
 import android.os.Build
 import android.support.customtabs.CustomTabsIntent
+import android.support.test.espresso.IdlingResource
 import android.text.Html
 import android.widget.*
 import it.lamba.utilslibrary.inflate
 import java.io.*
+import java.util.concurrent.atomic.AtomicBoolean
 
 @GlideModule
 class MyAppGlideModule : AppGlideModule() {
@@ -39,4 +41,44 @@ fun LinearLayout.addDependencyView(name: String, link: String) {
         customTabsIntent.launchUrl(context, Uri.parse(link))
     }
     this.addView(tv)
+}
+
+/**
+ * A very simple implementation of [IdlingResource].
+ *
+ *
+ * Consider using CountingIdlingResource from espresso-contrib package if you use this class from
+ * multiple threads or need to keep a count of pending operations.
+ */
+
+class SimpleIdleState : IdlingResource {
+
+    @Volatile
+    private var mCallback: IdlingResource.ResourceCallback? = null
+
+    // Idleness is controlled with this boolean.
+    private val mIsIdleNow = AtomicBoolean(false)
+
+    override fun getName(): String {
+        return this.javaClass.name
+    }
+
+    override fun isIdleNow(): Boolean {
+        return mIsIdleNow.get()
+    }
+
+    override fun registerIdleTransitionCallback(callback: IdlingResource.ResourceCallback) {
+        mCallback = callback
+    }
+
+    /**
+     * Sets the new idle state, if isIdleNow is true, it pings the [ResourceCallback].
+     * @param isIdleNow false if there are pending operations, true if idle.
+     */
+    fun setIdleState(isIdleNow: Boolean) {
+        mIsIdleNow.set(isIdleNow)
+        if (isIdleNow && mCallback != null) {
+            mCallback!!.onTransitionToIdle()
+        }
+    }
 }

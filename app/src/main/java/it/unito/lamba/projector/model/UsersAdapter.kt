@@ -33,7 +33,7 @@ class UsersAdapter(options: FirebaseRecyclerOptions<User>, val context: Context)
     })
 
     override fun onBindViewHolder(holder: UserVH, position: Int, model: User) = holder.bind(model.apply {
-        uid = snapshots.getSnapshot(position).key
+        uid = snapshots.getSnapshot(position).key!!
     }, context)
 
 

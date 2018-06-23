@@ -42,17 +42,17 @@ object Database {
     fun getCurrentUser(onResult: (user: User) -> Unit, hook: Boolean = false){
         getCurrentAuthUserID().apply {
             val userRef = db.reference.child("$USERS/$this")
-            val valueEventListener = object : ValueEventListener{
-                override fun onCancelled(p0: DatabaseError?) {}
+            val valueEventListener = object : ValueEventListener {
+                override fun onCancelled(p0: DatabaseError) {}
 
-                override fun onDataChange(p0: DataSnapshot?) {
-                    p0?.apply {
+                override fun onDataChange(p0: DataSnapshot) {
+                    p0.apply {
                         getValue(User::class.java)?.apply {
-                            uid = p0.key
-                            isUserAdmin(this.uid,{
+                            uid = p0.key!!
+                            isUserAdmin(this.uid) {
                                 this.isAdmin = it
                                 onResult(this)
-                            })
+                            }
                         }?:onResult(User())
                     }
                 }
@@ -70,18 +70,18 @@ object Database {
 
     fun getUserByUid(uid: String, onResult: (user: User?) -> Unit, onFailure: (e: Exception) -> Unit){
         db.reference.child(USERS).child(uid).addListenerForSingleValueEvent(object: ValueEventListener{
-            override fun onCancelled(p0: DatabaseError?) {
-                p0?.toException()?.let { onFailure(it) }
+            override fun onCancelled(p0: DatabaseError) {
+                p0.toException()?.let { onFailure(it) }
             }
 
-            override fun onDataChange(p0: DataSnapshot?) {
-                if(p0?.getValue(User::class.java)?.apply {
+            override fun onDataChange(p0: DataSnapshot) {
+                if(p0.getValue(User::class.java)?.apply {
                     this.apply{
-                        this.uid = p0.key
-                        isUserAdmin(this.uid, {
+                        this.uid = p0.key!!
+                        isUserAdmin(this.uid) {
                             this.isAdmin = it
                             onResult(this)
-                        })
+                        }
                     }
                 } == null) onResult(null)
             }
@@ -104,12 +104,12 @@ object Database {
     fun getYears(onResult: (years: Array<String>?) -> Unit){
         db.reference.child(YEARS_INDEXED).apply {
             hookMap[this] = addValueEventListener(object : ValueEventListener{
-                override fun onCancelled(p0: DatabaseError?) {
+                override fun onCancelled(p0: DatabaseError) {
                     Log.e(TAG, p0.toString())
                 }
 
-                override fun onDataChange(p0: DataSnapshot?) {
-                    p0?.let {
+                override fun onDataChange(p0: DataSnapshot) {
+                    p0.let {
                         val array = it.getValue(object : GenericTypeIndicator<HashMap<String, HashMap<String, Boolean>>>(){})?.keys?.toTypedArray()
                         onResult(array)
                     }
@@ -128,10 +128,10 @@ object Database {
 
     fun isUserAdmin(userId: String, onResult: (result: Boolean) -> Unit) {
         db.reference.child("indexes/admins/$userId").addListenerForSingleValueEvent(object: ValueEventListener{
-            override fun onCancelled(p0: DatabaseError?) {}
+            override fun onCancelled(p0: DatabaseError) {}
 
-            override fun onDataChange(p0: DataSnapshot?) {
-                if(p0?.getValue(Boolean::class.java)?.apply{
+            override fun onDataChange(p0: DataSnapshot) {
+                if(p0.getValue(Boolean::class.java)?.apply{
                     onResult(this)
                 } == null) onResult(false)
             }
@@ -174,10 +174,10 @@ object Database {
                                           onSuccess: () -> Unit = {}, onFailure: (e: Exception) -> Unit) =
         db.getReference(USERS).child(user.uid).child("imgUri")
                 .addListenerForSingleValueEvent(object : ValueEventListener{
-            override fun onCancelled(p0: DatabaseError?) {
+            override fun onCancelled(p0: DatabaseError) {
             }
 
-            override fun onDataChange(p0: DataSnapshot?) {
+            override fun onDataChange(p0: DataSnapshot) {
                 _loadUserProfilePictureToImageView(p0, context, view, onSuccess, onFailure)
             }
 
@@ -246,15 +246,15 @@ object Database {
         if(emails.isEmpty()) onResult(uids)
         else for(email in emails){
             ref.child(encodeEmail(email)).addListenerForSingleValueEvent(object : ValueEventListener{
-                override fun onDataChange(p0: DataSnapshot?) {
-                    p0?.getValue(String::class.java)?.apply {
+                override fun onDataChange(p0: DataSnapshot) {
+                    p0.getValue(String::class.java)?.apply {
                         uids.add(this)
                         i++
                     }
                     if(i == emails.size) onResult(uids)
                 }
 
-                override fun onCancelled(p0: DatabaseError?) {
+                override fun onCancelled(p0: DatabaseError) {
                     Log.e(TAG, p0.toString())
                 }
 
@@ -300,11 +300,11 @@ object Database {
     fun getProject(projectId: String, onResult: (project: Project) -> Unit, hook: Boolean = false): DatabaseReference {
         return db.reference.child(PROJECTS).child(projectId).apply {
             val listener = object: ValueEventListener{
-                override fun onCancelled(p0: DatabaseError?) {
+                override fun onCancelled(p0: DatabaseError) {
                 }
 
-                override fun onDataChange(p0: DataSnapshot?) {
-                    p0?.apply {
+                override fun onDataChange(p0: DataSnapshot) {
+                    p0.apply {
                         val prj = this.getValue(Project::class.java)!!
                         prj.id = this.key
                         onResult(prj)
@@ -357,8 +357,8 @@ object Database {
     fun updateProject(previousProject: Project, title: String, description: String, owners: HashMap<String, Boolean>,
                       oldImages: HashMap<String, Boolean>, newImages: ArrayList<File>,
                       documents: HashMap<String, Boolean>, repos: HashMap<String, Boolean>, onComplete: ()->Unit) {
-        uploadImages(newImages, {
-            db.reference.child(PROJECTS).child(previousProject.id).setValue(
+        uploadImages(newImages) {
+            db.reference.child(PROJECTS).child(previousProject.id!!).setValue(
                     Project(previousProject.id, title, description, owners, oldImages.apply {
                         it.forEach {
                             this[it] = true
@@ -367,15 +367,15 @@ object Database {
             ).addOnCompleteListener {
                 onComplete()
             }
-        })
+        }
     }
 
     fun getTotalUsers(onResult: (result: Int) -> Unit){
         db.reference.child("indexes/total-users").addListenerForSingleValueEvent(object : ValueEventListener{
-            override fun onCancelled(p0: DatabaseError?) {}
+            override fun onCancelled(p0: DatabaseError) {}
 
-            override fun onDataChange(p0: DataSnapshot?) {
-                if(p0?.getValue(Int::class.java)?.apply {
+            override fun onDataChange(p0: DataSnapshot) {
+                if(p0.getValue(Int::class.java)?.apply {
                     onResult(this)
                 }==null) onResult(0)
             }
@@ -384,10 +384,10 @@ object Database {
 
     fun getTotalProjects(onResult: (result: Int) -> Unit){
         db.reference.child("indexes/total-projects").addListenerForSingleValueEvent(object : ValueEventListener{
-            override fun onCancelled(p0: DatabaseError?) {}
+            override fun onCancelled(p0: DatabaseError) {}
 
-            override fun onDataChange(p0: DataSnapshot?) {
-                if(p0?.getValue(Int::class.java)?.apply {
+            override fun onDataChange(p0: DataSnapshot) {
+                if(p0.getValue(Int::class.java)?.apply {
                             onResult(this)
                         }==null) onResult(0)
             }

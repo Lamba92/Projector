@@ -23,6 +23,8 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Point
 import android.net.Uri
+import android.support.annotation.VisibleForTesting
+import android.support.test.espresso.IdlingResource
 import android.widget.AdapterView
 import android.widget.TextView
 import com.crashlytics.android.Crashlytics
@@ -50,8 +52,21 @@ const val LOGIN_EXTRA = "LOGIN_EXTRA"
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemSelectedListener {
 
     private val TAG = "MainActivity"
-    private var userProjectID: String? = null
+    var userProjectID: String? = null
     private var adminFlag = false
+
+    private var mUserIdlingResource: SimpleIdleState? = null
+
+    /**
+     * Only called from test, creates and returns a new [SimpleIdleState].
+     */
+    @VisibleForTesting
+    fun getUserIdlingResource(): IdlingResource {
+        if (mUserIdlingResource == null) {
+            mUserIdlingResource = SimpleIdleState()
+        }
+        return mUserIdlingResource!!
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,11 +90,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 AuthUI.getInstance()
                         .createSignInIntentBuilder()
                         .setAvailableProviders(Arrays.asList(
-                                AuthUI.IdpConfig.EmailBuilder().build()
-                                //,AuthUI.IdpConfig.GoogleBuilder().build()
-                                //,AuthUI.IdpConfig.FacebookBuilder().build()
-                                //,AuthUI.IdpConfig.TwitterBuilder().build()
-                                ))
+                                AuthUI.IdpConfig.EmailBuilder().build(),
+                                AuthUI.IdpConfig.GoogleBuilder().build(),
+                                AuthUI.IdpConfig.FacebookBuilder().build(),
+                                AuthUI.IdpConfig.TwitterBuilder().build()))
                         .build(),
                 RC_SIGN_IN)
     }
@@ -221,7 +235,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    private fun launchFragment(fragmentClass: Class<out ProjectorFragment>,
+    private fun launchFragment(fragmentClass: Class<out Fragment>,
                                bundle: Bundle? = null) {
         var f = false
         if (CacheableFragmentsTagRegister.isCacheable(fragmentClass)) {
@@ -320,6 +334,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         nav_view.setNavigationItemSelectedListener(this)
         launchFragment(AllProjectsFragment::class.java)
         Database.getCurrentUser({
+            mUserIdlingResource?.setIdleState(false)
             navigation_display_name.text = it.getDisplayName()
             navigation_email.text = it.email
             if (it.imgUri != null) {
@@ -345,6 +360,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                         .setIcon(R.drawable.ic_supervisor_account_black_24dp)
                 adminFlag = true
             }
+            mUserIdlingResource?.setIdleState(true)
         }, true)
         Database.getYears {
             if(it!=null){

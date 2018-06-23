@@ -12,6 +12,7 @@ import it.unito.lamba.projector.BindAdapterInAllProjectsEvent
 import it.unito.lamba.projector.model.ProjectsAdapter
 import org.greenrobot.eventbus.Subscribe
 
+const val MAIN_RV_ID = 123456
 
 class AllProjectsFragment: ProjectorFragment() {
 
@@ -22,6 +23,7 @@ class AllProjectsFragment: ProjectorFragment() {
         rv = RecyclerView(this.context)
         rv.layoutParams = CoordinatorLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT)
         rv.layoutManager = LinearLayoutManager(context)
+        rv.id = MAIN_RV_ID
         return rv
     }
 
