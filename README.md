@@ -25,6 +25,7 @@ Libraries used:
 - [Google: Firebase Database](https://firebase.google.com/)
 - [Google: Firebase Auth](https://firebase.google.com/)
 - [Google: Firebase Storage](https://firebase.google.com/)
+- [Google: Espresso](https://developer.android.com/training/testing/espresso/)
 - [Bumptech: Glide](https://github.com/bumptech/glide)
 - [Nex3z: Flow Layout](https://github.com/nex3z/FlowLayout)
 - [Robert Levonyan: Material Chip View](https://github.com/robertlevonyan/materialChipView)
