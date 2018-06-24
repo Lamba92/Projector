@@ -30,7 +30,7 @@
     <string name="twitter_consumer_key" translatable="false">TWITTER_KEY_HERE</string>
     <string name="twitter_consumer_secret" translatable="false">TWITTER_KEY_HERE</string>
     <string name="at_least_two_chars">At least 2 characters</string>
-    <string name="lorem_1p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tristique consequat hendrerit. Pellentesque a sodales est. Pellentesque vitae magna porttitor nunc tincidunt porta vitae in neque. Mauris pulvinar lacus non massa maximus, ac pretium velit accumsan. Duis dapibus velit mi, sit amet consectetur sem tincidunt ut. Aenean non vulputate dolor. Nam in felis leo. Nunc posuere enim non velit consequat elementum. Nullam ut mollis ante.</string>
+    <string name="lorem_1p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tristique consequat hendrerit. Pellentesque a sodales est. Pellentesque vitae magna porttitor nunc tincidunt porta vitae in neque. Mauris pulvinar lacus non massa maximus, ac pretium velit accumsan. Duis dapibus velit mi, sit amet consectetur sem tincidunt ut. Aenean non vulputate dolor. Nam in felis leo. Nunc posuere enim non velit consequat elementum. Nullam ut mollis ante..</string>
     <string name="link">Link</string>
     <string name="crash">Crash test me!</string>
     <string-array name="dependencyNames">
